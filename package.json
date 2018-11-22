@@ -4,12 +4,17 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.79.0",
-    "ws": "^1.1.1"
+    "request": "^2.88.0",
+    "ws": "^6.1.2",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "prettier-standard": "^8.0.1",
+    "standard": "^12.0.1"
   }
 }
