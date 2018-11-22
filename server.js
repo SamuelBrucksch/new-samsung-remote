@@ -15,7 +15,7 @@ app.get('/samsungtv/off', (req, res) => {
     .then(() => {
       res.send('ok')
     })
-    .catch((err) => {
+    .catch(err => {
       res.send(500, err)
     })
 })
@@ -25,7 +25,7 @@ app.get('/samsungtv/channel/:channel', (req, res) => {
     .then(() => {
       res.send('ok')
     })
-    .catch((err) => {
+    .catch(err => {
       res.send(500, err)
     })
 })
@@ -34,17 +34,14 @@ app.listen(3030, () => {
   console.log('Samsung TV app listening on port 3030')
 })
 
-const runCommand = (commandArray) => {
-  return remote.tvReady()
-    .then(() => {
-      let promiseChain = Promise.resolve()
-      for (const cmd of getCommand(commandArray)) {
-        promiseChain = promiseChain.then(() => {
-          return remote.sendKey(cmd)
-        })
-      }
-      return promiseChain
-    }).catch((err) => {
-      console.error(err)
-    })
+const runCommand = commandArray => {
+  return remote.tvReady().then(() => {
+    let promiseChain = Promise.resolve()
+    for (const cmd of getCommand(commandArray)) {
+      promiseChain = promiseChain.then(() => {
+        return remote.sendKey(cmd)
+      })
+    }
+    return promiseChain
+  })
 }
